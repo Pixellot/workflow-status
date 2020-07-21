@@ -1,9 +1,9 @@
 # action.yml
 name: 'Workflow Status'
-description: 'Returns workflow summery status(success, cancelled, failure), in case of failure it also returns the job and step of failure'
+description: 'Returns workflow summery status(success, cancelled, failure), in case of failure it also returns the job and step of failure.'
 inputs:
   workflow_name:  # id of input
-    description: 'name of current workflow'
+    description: 'name of current workflow.'
     required: true
     default: '${{ github.workflow }}'  
   github_run_id:  
@@ -20,13 +20,13 @@ inputs:
     default: '${{ github.token }}'  
 outputs:
   workflow_result: # id of output
-    description: 'The result of the current workflow run (success,cancelled,failure)'
+    description: 'The result of the current workflow run (success,cancelled,failure).'
   failed_job: 
-    description: 'The name of the job that was failed(only if workflow conclusion is failure)'  
+    description: 'The name of the job that was failed(only if workflow conclusion is failure).'  
   failed_step: 
-    description: 'The name of the step that was failed(only if workflow conclusion is failure)'  
+    description: 'The name of the step that was failed(only if workflow conclusion is failure).'  
   notification_color: 
-    description:  'color for slack notification. '
+    description:  'The color for A slack notification (Green - Success, Yelllow - Cancelled, Red - Failure).'
 runs:
   using: 'docker'
   image: 'Dockerfile'
