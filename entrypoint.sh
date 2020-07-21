@@ -2,15 +2,15 @@
 
 get_data(){
    
-         curl -v -sL -H 'Cache-Control: no-cache'  -H 'Accept: application/vnd.github.v3+json' -H "authorization: Bearer $2" $1  
+         curl -v -sL -H "Cache-Control: no-cache"  -H "Accept: application/vnd.github.v3+json" -H "authorization: Bearer $2" $1  
 }
 
-echo "running curl test:  curl  -H -v 'Cache-Control: no-cache'  -H 'Accept: application/vnd.github.v3+json' -H 'authorization: Bearer $4'  https://api.github.com/repos/$3/actions/runs/$2/jobs"
+
 WORKFLOW_JOBS_URL="https://api.github.com/repos/$3/actions/runs/$2/jobs"   # Api to get current workflow jobs and steps.
 workflow_success=true
 workflow_failure=false
 workflow_jobs=$(get_data ${WORKFLOW_JOBS_URL} $4 | jq '[.jobs[] | select(.status == "completed") | {name,conclusion,id,run_id,started_at,steps}] |sort_by(.started_at)')
-#jobs_conclusion=$(echo $workflow_jobs |jq -r -c '.[] | .conclusion')       # Filter for every job, get only run status(conclusion).
+jobs_conclusion=$(echo $workflow_jobs |jq -r -c '.[] | .conclusion')       # Filter for every job, get only run status(conclusion).
 
 for conclusion in $jobs_conclusion ; do
       if [[ $conclusion == "cancelled" ]] ; then                           # Assuming seccess change boolean flag for either cancelled or failure and break.
@@ -20,8 +20,8 @@ for conclusion in $jobs_conclusion ; do
 
       if [[ $conclusion == "failure"  ]] ; then
         workflow_failure=true
-      #  failed_job=$(echo $workflow_jobs |jq -r '.[] | select(.conclusion == "failure") | .name')
-     #   failed_job_step=$(echo $workflow_jobs |jq -r '.[]|select(.conclusion == "failure") | .steps[] | select(.conclusion == "failure") | .name')
+        failed_job=$(echo $workflow_jobs |jq -r '.[] | select(.conclusion == "failure") | .name')
+        failed_job_step=$(echo $workflow_jobs |jq -r '.[]|select(.conclusion == "failure") | .steps[] | select(.conclusion == "failure") | .name')
         break
       fi
 done
