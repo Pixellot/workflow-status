@@ -5,8 +5,8 @@ get_data(){
          curl -sL -H 'Cache-Control: no-cache'  -H 'Accept: application/vnd.github.v3+json'  $1  
 }
 echo $1 $2 $3
-echo "running curl test:  curl  -H -v 'Cache-Control: no-cache'  -H 'Accept: application/vnd.github.v3+json'  https://api.github.com/repos/$3/actions/runs/$2/jobs"
-echo $(curl -H -v 'Cache-Control: no-cache'  -H 'Accept: application/vnd.github.v3+json'  https://api.github.com/repos/$3/actions/runs/$2/jobs)
+#echo "running curl test:  curl  -H -v 'Cache-Control: no-cache'  -H 'Accept: application/vnd.github.v3+json'  https://api.github.com/repos/$3/actions/runs/$2/jobs"
+echo $(curl -v -H 'Cache-Control: no-cache'  -H 'Accept: application/vnd.github.v3+json'  https://api.github.com/repos/$3/actions/runs/$2/jobs)
 WORKFLOW_JOBS_URL="https://api.github.com/repos/$3/actions/runs/$2/jobs"   # Api to get current workflow jobs and steps.
 workflow_success=true
 workflow_failure=false
