@@ -1,5 +1,11 @@
 #!/bin/sh -l
 
+### SCRIPT-ARGS ####################
+### $1- ${{ inputs.workflow_name }}
+### $2- ${{ inputs.github_run_id }}
+### $3- ${{ inputs.github_repository }}
+### $4- ${{ inputs.github_token }}
+
 get_data(){
    
          curl -v -sL -H "Cache-Control: no-cache"  -H "Accept: application/vnd.github.v3+json" -H "authorization: Bearer $2" $1  
