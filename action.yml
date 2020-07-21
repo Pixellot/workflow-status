@@ -13,7 +13,11 @@ inputs:
   github_repository:  
     description: 'The owner and repository name.'
     required: true
-    default: '<placeholder-github-repository>'  
+    default: '<placeholder-github-repository>'
+  github_token:  
+    description: 'A token to authenticate on behalf of the GitHub App installed on your repository.'
+    required: true
+    default: '<placeholder-github-token>'  
 outputs:
   workflow_result: # id of output
     description: 'The result of the current workflow run (success,cancelled,failure)'
@@ -30,4 +34,5 @@ runs:
     - ${{ inputs.workflow_name }}
     - ${{ inputs.github_run_id }}
     - ${{ inputs.github_repository }}
+    - ${{ inputs.github_token }}
     
