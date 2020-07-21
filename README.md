@@ -48,6 +48,7 @@ test-slack:
       workflow_name:  ${{ github.workflow }}
       github_run_id: ${{ github.run_id }}
       github_repository: ${{ github.repository }}
+      github_token: ${{ github.token }}
 
   - name: Slack Notification
         uses: rtCamp/action-slack-notify@master
