@@ -1,7 +1,8 @@
 # Workflow Status Action 
 
 This action returns the workflow status (Success, Cancelled, Failure), in case of failure it also returns the failed job name and the failed job step name, also a color hex code is returned  for each one of the workflow statuses (it's optional may be used for slack intergration).
-This action should run in the final job of the workflow (it doesn't report on the job it's currently running, doesnt report itself).
+
+This action should run as part of the final job in the workflow (it doesn't report on the job it's currently running, doesnt report itself).
 the job assumes workflow success, and changes its status on first job that report's a "cancel" or "failure" state as a final conclustion.
 
 ## Inputs
