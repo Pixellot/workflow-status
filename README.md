@@ -5,13 +5,13 @@ This action should run in the final job of the workflow (it doesn't report on th
 the job assumes workflow success, and changes its status on first job that report's a "cancel" or "failure" state as a final conclustion.
 
 ## Inputs
-
-| Name              | Required | Description                                                                                                     |
-| :---              |   :---:  | :---                                                                                                            |
-| workflow_name     | required | The name of the workflow we are curently running. Default:      `"${{ github.workflow }}"`.                     |
-| github_run_id     | required | A unique number for each run within a repository. This number does not change if you re-run the workflow run. Default:        `"${{ github.run_id }}"`.                                                                                                                       | 
-| github_repository | required | The owner and repository name. e.g, pixellot/Hello-World. Default: `"${{ github.repository }}"`.                |     
-| github_token      | required | A token to authenticate on behalf of the GitHub App installed on your repository.    `"${{ github.token }}"`.   |
+ 
+| Name              | Required | Description                                                                                                         |
+| :---              |   :---:  | :---                                                                                                                |
+| workflow_name     | required | The name of the workflow we are curently running. Default:      `"${{ github.workflow }}"`.                         |
+| github_run_id     | required | A unique number for each run within a repository. This number does not change if you re-run the workflow run. Default:        `"${{ github.run_id }}"`.                                                                                                                           | 
+| github_repository | required | The owner and repository name. e.g, pixellot/Hello-World. Default: `"${{ github.repository }}"`.                    |     
+| github_token      | required | A token to authenticate on behalf of the GitHub App installed on your repository.        `"${{ github.token }}"`.   |
 
 
 ## Outputs
