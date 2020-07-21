@@ -5,19 +5,19 @@ inputs:
   workflow_name:  # id of input
     description: 'name of current workflow'
     required: true
-    default: '<placeholder-workflow-name>'  
+    default: '${{ github.workflow }}'  
   github_run_id:  
     description: 'A unique number for each workflow run within a repository.'
     required: true
-    default: '<placeholder-github-run-id>'  
+    default: '${{ github.run_id }}'  
   github_repository:  
     description: 'The owner and repository name.'
     required: true
-    default: '<placeholder-github-repository>'
+    default: '${{ github.repository }}'
   github_token:  
     description: 'A token to authenticate on behalf of the GitHub App installed on your repository.'
     required: true
-    default: '<placeholder-github-token>'  
+    default: '${{ github.token }}'  
 outputs:
   workflow_result: # id of output
     description: 'The result of the current workflow run (success,cancelled,failure)'
