@@ -2,7 +2,7 @@
 
 get_data(){
    
-         curl -v -sL -H 'Cache-Control: no-cache'  -H 'Accept: application/vnd.github.v3+json' -H 'authorization: Bearer ${ACTIONS_RUNTIME_TOKEN}' $1  
+         curl -v -sL -H 'Cache-Control: no-cache'  -H 'Accept: application/vnd.github.v3+json' -H "authorization: Bearer $2" $1  
 }
 
 echo "running curl test:  curl  -H -v 'Cache-Control: no-cache'  -H 'Accept: application/vnd.github.v3+json' -H 'authorization: Bearer $4'  https://api.github.com/repos/$3/actions/runs/$2/jobs"
