@@ -23,6 +23,7 @@ the job assumes workflow success, and changes its status on first job that repor
 | failed_job            | The name of the job that was failed (only if workflow conclusion is Failure).             |
 | failed_step           | The name of the step that was failed (only if workflow conclusion is Failure).            | 
 | notification_color    | The color for A slack notification (Green - Success, Yelllow - Cancelled, Red - Failure). |
+| notification_icon     | An icon for A slack notification.                                                         |
 
 ## Example usage
 ```yaml
