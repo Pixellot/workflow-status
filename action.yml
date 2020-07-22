@@ -26,7 +26,9 @@ outputs:
   failed_step: 
     description: 'The name of the step that was failed(only if workflow conclusion is failure).'  
   notification_color: 
-    description:  'The color for A slack notification (Green - Success, Yelllow - Cancelled, Red - Failure).'
+    description:  'A color for A slack notification (Green - Success, Yelllow - Cancelled, Red - Failure).'
+  notification_icon: 
+    description:  'An icon for A slack notification.'  
 runs:
   using: 'docker'
   image: 'Dockerfile'
