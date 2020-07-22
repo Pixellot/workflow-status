@@ -26,8 +26,8 @@ for conclusion in $jobs_conclusion ; do
 
       if [[ $conclusion == "failure"  ]] ; then
         workflow_failure=true
-        failed_job=$(echo $workflow_jobs |jq -r '.[] | select(.conclusion == "failure") | .name')     
-        failed_job_step=$(echo $workflow_jobs |jq -r '.[]|select(.conclusion == "failure") | .steps[] | select(.conclusion == "failure") | .name')
+        failed_job=$(echo $workflow_jobs |jq  '.[] | select(.conclusion == "failure") | .name')     
+        failed_job_step=$(echo $workflow_jobs |jq  '.[]|select(.conclusion == "failure") | .steps[] | select(.conclusion == "failure") | .name')
         break
       fi
 done
