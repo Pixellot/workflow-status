@@ -36,15 +36,18 @@ done
 case "${workflow_success},${workflow_failure}" in                                                        
                                                                                                                                                                                                                  
   false,false)   echo "::set-output name=workflow_result::Cancelled"      # Set github action outputs
-                 echo "::set-output name=notification_color::#FCD84F"  ;;
+                 echo "::set-output name=notification_color::#FCD84F"
+                 echo "::set-output name=notification_icon::":no_entry_sign:"  ;;
   
                                                                                                          
   true,true  )   echo "::set-output name=workflow_result::Failure"                                
                  echo "::set-output name=failed_job::$failed_job"  
                  echo "::set-output name=failed_step::$failed_job_step"
-                 echo "::set-output name=notification_color::#F72407"  ;;                                                                                                                        
+                 echo "::set-output name=notification_color::#F72407"
+                 echo "::set-output name=notification_icon::":X:"  ;;
                                                                                                          
   *          )   echo "::set-output name=workflow_result::Success"
-                 echo "::set-output name=notification_color::#63DE0E";;                            
+                 echo "::set-output name=notification_color::#63DE0E"
+                 echo "::set-output name=notification_icon::":white_check_mark:"  ;;
 
 esac
