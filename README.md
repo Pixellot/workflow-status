@@ -3,6 +3,8 @@
 This action returns the workflow status (Success, Cancelled, Failure), in case of failure it also returns the failed job name and the failed job step name, also a color hex code is returned  for each one of the workflow statuses (it's optional may be used for slack intergration).
 
 This action should run as part of the final job in the workflow (it doesn't report on the job it's currently running, doesnt report itself).
+the job the action runs should "need" all the other jobs in the workflow, that way it will run after all other jobs have finished.
+the job "workflow-status" runs in should rin with "if: always()" clause, that way it will run and report on failure as well.
 the job assumes workflow success, and changes its status on first job that report's a "cancel" or "failure" state as a final conclustion.
 
 ## Inputs
@@ -35,11 +37,30 @@ on:
     branches: [ master ]    
 jobs:
 
+int:
+  name: ESLint
+  runs-on: ubuntu-latest
+  ...
+
+test:
+  name: Coverage
+  needs: lint
+  strategy:
+    matrix:
+      node: ['11', '12']
+  ...
+
+publish:
+  name: Publish Package
+  needs: test
+  if: startsWith(github.ref, 'refs/tags/v')
+  ...
+
 test-slack:
   name: slack-test
   runs-on: ubuntu-latest
-  needs: []
-  if: always()
+  needs: [int, test, publish]                 # Should need all the jobs in the workflow, that way it will run only after all other jobs.
+  if: always()                                # this will make sure the job will run and report on failure as well.
   steps:
   
   - name: Workflow Status 
