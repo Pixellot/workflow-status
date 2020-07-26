@@ -57,8 +57,8 @@ publish:
   if: startsWith(github.ref, 'refs/tags/v')
   ...
 
-test-slack:
-  name: slack-test
+send_notification:
+  name: send-notification
   runs-on: ubuntu-latest
   needs: [int, test, publish]                 # Should need all the jobs in the workflow, that way it will run only after all other jobs.
   if: always()                                # this will make sure the job will run and report on failure as well.
