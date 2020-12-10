@@ -47,7 +47,7 @@ case "${workflow_success},${workflow_failure}" in
                  echo "::set-output name=notification_icon:::X:"  ;;
                                                                                                          
   *          )   echo "::set-output name=workflow_result::Success"
-                 echo "::set-output name=notification_color::#63DE0E"
+                 echo "::set-output name=notification_color::#18be52"
                  echo "::set-output name=notification_icon:::heavy_check_mark:"  ;;
 
 esac
