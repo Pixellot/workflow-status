@@ -35,19 +35,19 @@ done
 
 case "${workflow_success},${workflow_failure}" in                                                        
                                                                                                                                                                                                                  
-  false,false)   echo "::set-output name=workflow_result::Cancelled"      # Set github action outputs
-                 echo "::set-output name=notification_color::#FCD84F"
-                 echo "::set-output name=notification_icon:::no_entry_sign:"  ;;
+  false,false)   echo "workflow_result=Cancelled" >> $GITHUB_OUTPUT    # Set github action outputs
+                 echo "notification_color=#FCD84F" >> $GITHUB_OUTPUT  
+                 echo "notification_icon=:no_entry_sign:" >> $GITHUB_OUTPUT   ;;
   
                                                                                                          
-  true,true  )   echo "::set-output name=workflow_result::Failure"                                
-                 echo "::set-output name=failed_job::$failed_job"  
-                 echo "::set-output name=failed_step::$failed_job_step"
-                 echo "::set-output name=notification_color::#F72407"
-                 echo "::set-output name=notification_icon:::X:"  ;;
+  true,true  )   echo "workflow_result=Failure" >> $GITHUB_OUTPUT                                 
+                 echo "failed_job=$failed_job" >> $GITHUB_OUTPUT  
+                 echo "failed_step=$failed_job_step" >> $GITHUB_OUTPUT  
+                 echo "notification_color=#F72407" >> $GITHUB_OUTPUT  
+                 echo "notification_icon=:X:" >> $GITHUB_OUTPUT    ;;
                                                                                                          
-  *          )   echo "::set-output name=workflow_result::Success"
-                 echo "::set-output name=notification_color::#18be52"
-                 echo "::set-output name=notification_icon:::heavy_check_mark:"  ;;
+  *          )   echo "workflow_result=Success" >> $GITHUB_OUTPUT  
+                 echo "notification_color=#18be52" >> $GITHUB_OUTPUT  
+                 echo "notification_icon=:heavy_check_mark:" >> $GITHUB_OUTPUT   ;;
 
 esac
